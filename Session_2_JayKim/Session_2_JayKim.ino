@@ -43,7 +43,7 @@ void loop() {
     toggle = !toggle;
   }
 // When the button is released it goes from HIGH to LOW
-  if (!buttonState && lsatButtonState)
+  if (!buttonState && lastButtonState)
   {
     fallToggle = !fallToggle;
   }
@@ -63,10 +63,7 @@ else {
 }
   if(digitalRead(buttonPin) == LOW) {
     digitalWrite(led2, LOW);
-    else {
+  }else{
       digitalWrite(led2, HIGH);
     }
-  }
-
-
 }
