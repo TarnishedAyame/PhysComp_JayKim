@@ -1,4 +1,4 @@
-const int buttonPin = 9;
+const int buttonPin = 40;
 const int ledPin = 4;
 const int led2 = 5;
 const int led3 = 6;
@@ -50,7 +50,7 @@ void loop() {
   
   lastButtonState = buttonState; 
 
-  digitalWrite(led3, toggle); // Turns the LED on and off with the toggle
+  digitalWrite(led3, toggle); 
 
 Serial.printf("Button = %i _ Toggle = %i _ Falling = %i \n", buttonState, toggle, fallToggle);
 
