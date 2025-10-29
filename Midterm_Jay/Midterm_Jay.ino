@@ -18,7 +18,7 @@ void setup() {
   pinMode(ledPin4, OUTPUT);
   pinMode(ledPin5, OUTPUT);
   
-  pinMode(buttonPin, INPUT,PULLUP);
+  pinMode(buttonPin, INPUT_PULLUP);
   pinMode(piezopin, OUTPUT);
 
   
@@ -37,7 +37,7 @@ void loop() {
  //The plan is that when it reaches a certain thershold it will turn one LED on and the other one Off
  // And when Pot reaches maximum the piezo will make a tune. was debating on brightness or something else like if u push a button a LED will turn on
  // a LED and will increase brightness overtime.
-  if ( && potValue < 100) {
+  if (potValue < 100) {
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin3, LOW);
@@ -51,6 +51,7 @@ void loop() {
     digitalWrite(ledPin4, LOW);
     digitalWrite(ledPin5, LOW);
     tone(piezopin, 500);
+    
   } if (buttonState==true && potValue > 2000) {
     digitalWrite(ledPin3, HIGH);
     digitalWrite(ledPin2, LOW);
@@ -58,11 +59,13 @@ void loop() {
     digitalWrite(ledPin4, LOW);
     digitalWrite(ledPin5, LOW);
     tone(piezopin, 1000);
+
   } if (buttonState==true && potValue > 3000) {
     digitalWrite(ledPin4, HIGH);
     digitalWrite(ledPin3, LOW);
     tone(piezopin, 1500);
-  } if buttonState==true && (potValue > 4090) {
+
+  } if (buttonState==true && potValue > 4090) {
     digitalWrite(ledPin5, HIGH);
     digitalWrite(ledPin3, LOW);
     digitalWrite(ledPin2, LOW);
