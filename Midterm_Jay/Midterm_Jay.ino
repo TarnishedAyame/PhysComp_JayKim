@@ -28,11 +28,12 @@ void setup() {
 void loop() {
 
   potValue = analogRead(potPin);
-  buttonState = digitalRead(buttonPin);
+  int buttonState = digitalRead(buttonPin);
 
   // Print the value to the Serial Monitor for monitoring
   Serial.print("Pot value: ");
   Serial.println(potValue);
+  bool b1 = !digitalRead(buttonPin);
 
  //The plan is that when it reaches a certain thershold it will turn one LED on and the other one Off
  // And when Pot reaches maximum the piezo will make a tune. was debating on brightness or something else like if u push a button a LED will turn on
@@ -44,36 +45,37 @@ void loop() {
     digitalWrite(ledPin4, LOW);
     digitalWrite(ledPin5, LOW);
 
-  } if (buttonState==true && potValue > 900) {
+  } if (buttonState == true && potValue > 900 & potValue < 2000) {
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin2, HIGH);
-    digitalWrite(ledPin3, LOW);
-    digitalWrite(ledPin4, LOW);
-    digitalWrite(ledPin5, LOW);
-    tone(piezopin, 500);
+
+    digitalWrite(piezopin, HIGH);;
     
-  } if (buttonState==true && potValue > 2000) {
+  } if (buttonState == true && potValue > 2000) {
     digitalWrite(ledPin3, HIGH);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin4, LOW);
     digitalWrite(ledPin5, LOW);
-    tone(piezopin, 1000);
+    digitalWrite(piezopin, HIGH);
 
-  } if (buttonState==true && potValue > 3000) {
+  } if (buttonState == true && potValue > 3000) {
     digitalWrite(ledPin4, HIGH);
     digitalWrite(ledPin3, LOW);
-    tone(piezopin, 1500);
+    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin4, LOW);
+    digitalWrite(piezopin, HIGH);
 
-  } if (buttonState==true && potValue > 4090) {
+  } if (buttonState == true && potValue > 4090) {
     digitalWrite(ledPin5, HIGH);
     digitalWrite(ledPin3, LOW);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin4, LOW);
-    tone(piezopin, 2000);
+    digitalWrite(piezopin, HIGH);
   }
   else {
-    noTone(piezopin);
+    digitalWrite(piezopin, LOW);
   }
 }
