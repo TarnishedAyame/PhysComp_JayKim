@@ -34,6 +34,7 @@ void loop() {
   // Print the value to the Serial Monitor for monitoring
   Serial.print("Pot value: ");
   Serial.println(potValue);
+  
   Serial.print("Button State: ");
   Serial.print(buttonState);
 
@@ -64,6 +65,7 @@ void loop() {
   } if (potValue > 800) {
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, LOW);
 
   } if (potValue > 2100) {
     digitalWrite(ledPin3, HIGH);
