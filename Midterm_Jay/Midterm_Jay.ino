@@ -23,6 +23,7 @@ void setup() {
 
   
   Serial.begin(115200);
+
 }
 
 void loop() {
@@ -33,6 +34,9 @@ void loop() {
   // Print the value to the Serial Monitor for monitoring
   Serial.print("Pot value: ");
   Serial.println(potValue);
+  Serial.print("Button State: ");
+  Serial.print(buttonState);
+
   bool b1 = !digitalRead(buttonPin);
 
  //The plan is that when it reaches a certain thershold it will turn one LED on and the other one Off
@@ -45,37 +49,44 @@ void loop() {
     digitalWrite(ledPin4, LOW);
     digitalWrite(ledPin5, LOW);
 
-  } if (buttonState == true && potValue > 900 & potValue < 2000) {
+  } if (buttonState == LOW && potValue > 800) {
+    tone(piezopin, 100);;
+    
+  } if (buttonState == LOW && potValue > 2100) {
+    tone(piezopin, 250);
+
+  } if (buttonState == LOW && potValue > 3000) {
+    tone(piezopin, 500);
+
+  } if (buttonState == LOW && potValue > 4090) {
+    tone(piezopin, 1000);
+
+  } if (potValue > 800) {
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin2, HIGH);
 
-    digitalWrite(piezopin, HIGH);;
-    
-  } if (buttonState == true && potValue > 2000) {
+  } if (potValue > 2100) {
     digitalWrite(ledPin3, HIGH);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin4, LOW);
     digitalWrite(ledPin5, LOW);
-    digitalWrite(piezopin, HIGH);
 
-  } if (buttonState == true && potValue > 3000) {
+  } if (potValue > 3000) {
     digitalWrite(ledPin4, HIGH);
     digitalWrite(ledPin3, LOW);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin1, LOW);
-    digitalWrite(ledPin4, LOW);
-    digitalWrite(piezopin, HIGH);
-
-  } if (buttonState == true && potValue > 4090) {
+    digitalWrite(ledPin5, LOW);
+  } if (potValue > 4090) {
     digitalWrite(ledPin5, HIGH);
     digitalWrite(ledPin3, LOW);
     digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin1, LOW);
     digitalWrite(ledPin4, LOW);
-    digitalWrite(piezopin, HIGH);
   }
+
   else {
-    digitalWrite(piezopin, LOW);
+    noTone(piezopin);
   }
 }
