@@ -18,7 +18,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (Serial.available()) {
     char command = Serial.read();
-
+//do it as a timer not as a delay cause it will pause the commands
     if (command == '1') {
       digitalWrite(ledPin, HIGH);
       delay(200);

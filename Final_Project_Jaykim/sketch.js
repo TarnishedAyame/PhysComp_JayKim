@@ -4,13 +4,16 @@ let options = { baudRate: 9600}; // change the baud rate to match your Arduino c
 let outVal = 0; // value to be sent via serial
 
 let sound;
-
+/* 
+The Final Project and what this code does is that when you click the mouse you turn on
+the LEDS which blink and a sound plays as well.
+*/
 function preload() {
   sound = loadSound("Ki_charge.mp3");
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 950);
 
   serial = new p5.SerialPort();             // make a new instance of the serialport library
   serial.on('list', printList);             // set a callback function for the serialport list event
@@ -26,7 +29,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background("#FFFF00");
 
   text("To Charge up Ki", width/2, height/2);
 }
