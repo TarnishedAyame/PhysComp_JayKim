@@ -1,8 +1,9 @@
 const int ledPin = 4;
-const int ledPin2 = 5;
-const int ledPin3 = 6;
-const int ledPin4 = 7;
-const int ledPin5 = 8;
+const int John = 5;
+const int ps2 = 6;
+const int psp = 7;
+const int ledOn =15;
+const int fading = 8;
 
 int ms = 250;
 int speed = 250;           
