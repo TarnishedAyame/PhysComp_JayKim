@@ -23,7 +23,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1000, 950);
+  createCanvas(1200, 950);
 
   serial = new p5.SerialPort();             // make a new instance of the serialport library
   serial.on('list', printList);             // set a callback function for the serialport list event
